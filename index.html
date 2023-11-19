@@ -20,7 +20,7 @@
             var userInput = document.getElementById("userInput").value;
             var modifiedText = "watch." + userInput.replace(/ /g, '.') + ".mx";
             if (modifiedText.length > 50) {
-                modifiedText = modifiedText.substring(0, 50) + ".mx";
+                modifiedText = modifiedText.substring(0, 47) + (modifiedText[47] === '.' ? 'x' : modifiedText[47]) + ".mx";
             }
             document.getElementById("copyButton").style.display = "block";
             copiedText = modifiedText;
