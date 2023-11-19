@@ -24,6 +24,8 @@
             var specificString2 = "mkv?a=view";
             var modifiedText = "watch." + userInput.replace(/ /g, '.').replace(specificString1, '').replace(specificString2, '') + ".mx";
 
+            if (modifiedText.length > 50) {
+                modifiedText = modifiedText.substring(0, 47) + ".mx";
             }
 
             // Replace %20 with .
@@ -32,7 +34,7 @@
             // Remove continuous dots 
             modifiedText = modifiedText.replace(/\.{2,}/g, '.');
 
-            // Replace all other characters except a-z, A-Z, 0-9, .
+            // Replace all other characters except a-z, A-Z, 0-9, . with .
             modifiedText = modifiedText.replace(/[^a-zA-Z0-9.]/g, '.');
 
             // Remove continuous dots 
