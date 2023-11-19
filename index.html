@@ -16,6 +16,8 @@
     <button onclick="copyToClipboard()" id="copyButton" style="display:none;">Copy</button>
 
     <script>
+        var copiedText;
+
         function modifyText() {
             var userInput = document.getElementById("userInput").value;
             var specificString1 = "https://stream.airtelxstreamsmarttube.workers.dev/0:/";
@@ -26,7 +28,7 @@
                 modifiedText = modifiedText.substring(0, 46) + "x.mx";
             }
 
-            modifiedText = modifiedText.replace(/[^a-zA-Z0-9]/g, '');
+            modifiedText = modifiedText.replace(/[^a-zA-Z0-9.]/g, '');
 
             document.getElementById("copyButton").style.display = "block";
             copiedText = modifiedText;
