@@ -5,6 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Modifier</title>
+    <style>
+        #modifiedText {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
 </head>
 <body>
 
@@ -14,6 +21,8 @@
     <button onclick="modifyText()">Modify</button>
 
     <button onclick="copyToClipboard()" id="copyButton" style="display:none;">Copy</button>
+
+    <div id="modifiedText"></div>
 
     <script>
         function modifyText() {
@@ -26,6 +35,7 @@
                 modifiedText = modifiedText.substring(0, 47) + (modifiedText[47] === '.' ? 'x' : modifiedText[47]) + ".mx";
             }
             document.getElementById("copyButton").style.display = "block";
+            document.getElementById("modifiedText").innerText = modifiedText;
             copiedText = modifiedText;
         }
 
