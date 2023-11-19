@@ -28,13 +28,15 @@
                 modifiedText = modifiedText.substring(0, 46) + "x.mx";
             }
 
-            // Remove continuous dots
-            modifiedText = modifiedText.replace(/\.{2,}/g, '.');
-
-            modifiedText = modifiedText.replace(/[^a-zA-Z0-9.]/g, '');
-
             // Replace %20 with .
             modifiedText = modifiedText.replace(/%20/g, '.');
+            
+            // Remove continuous dots 
+            modifiedText = modifiedText.replace(/\.{2,}/g, '.');
+
+            // Replace all other characters except a-z, A-Z, 0-9, .
+            modifiedText = modifiedText.replace(/[^a-zA-Z0-9.]/g, '');
+
 
             document.getElementById("copyButton").style.display = "block";
             copiedText = modifiedText;
