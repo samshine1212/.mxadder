@@ -18,7 +18,12 @@
     <script>
         function modifyText() {
             var userInput = document.getElementById("userInput").value;
+            var specificString = "https://stream.airtelxstreamsmarttube.workers.dev/0:/";
             var modifiedText = "watch." + userInput.replace(/ /g, '.') + ".mx";
+            
+            // Remove specific string if present
+            modifiedText = modifiedText.replace(specificString, "");
+
             if (modifiedText.length > 50) {
                 modifiedText = modifiedText.substring(0, 47) + (modifiedText[47] === '.' ? 'x' : modifiedText[47]) + ".mx";
             }
