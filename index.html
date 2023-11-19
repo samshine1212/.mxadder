@@ -18,7 +18,7 @@
     <script>
         function modifyText() {
             var userInput = document.getElementById("userInput").value;
-            var modifiedText = "watch." + userInput + ".mx";
+            var modifiedText = "watch." + userInput.replace(/ /g, '.') + ".mx";
             modifiedText = modifiedText.substring(0, 50); // Limit to a maximum of 50 characters
             document.getElementById("copyButton").style.display = "block";
             copiedText = modifiedText;
@@ -38,4 +38,3 @@
 
 </body>
 </html>
-
