@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Modifier</title>
+</head>
+<body>
+
+    <label for="userInput">Enter text:</label>
+    <input type="text" id="userInput">
+
+    <button onclick="modifyText()">Modify</button>
+
+    <button onclick="copyToClipboard()" id="copyButton" style="display:none;">Copy</button>
+
+    <script>
+        function modifyText() {
+            var userInput = document.getElementById("userInput").value;
+            var modifiedText = "watch." + userInput + ".mx";
+            modifiedText = modifiedText.substring(0, 50); // Limit to a maximum of 50 characters
+            document.getElementById("copyButton").style.display = "block";
+            copiedText = modifiedText;
+        }
+
+        function copyToClipboard() {
+            var copyText = copiedText;
+            var textArea = document.createElement("textarea");
+            textArea.value = copyText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            alert("Copied to clipboard: " + copyText);
+        }
+    </script>
+
+</body>
+</html>
+
