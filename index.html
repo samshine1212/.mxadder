@@ -26,7 +26,7 @@
                 modifiedText = modifiedText.substring(0, 46) + "x.mx";
             }
 
-            modifiedText = modifiedText.replace(/\.+/g, '.');
+            modifiedText = modifiedText.replace(/\.+/g, '.').replace(/%20/g, '');
 
             document.getElementById("copyButton").style.display = "block";
             copiedText = modifiedText;
