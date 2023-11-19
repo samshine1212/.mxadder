@@ -23,8 +23,11 @@
             var modifiedText = "watch." + userInput.replace(/ /g, '.').replace(specificString1, '').replace(specificString2, '') + ".mx";
             
             if (modifiedText.length > 50) {
-                modifiedText = modifiedText.substring(0, 47) + (modifiedText[47] === '.' ? 'x' : modifiedText[47]) + ".mx";
+                modifiedText = modifiedText.substring(0, 46) + "x.mx";
             }
+
+            modifiedText = modifiedText.replace(/\.+/g, '.');
+
             document.getElementById("copyButton").style.display = "block";
             copiedText = modifiedText;
         }
