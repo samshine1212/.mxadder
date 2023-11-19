@@ -19,7 +19,9 @@
         function modifyText() {
             var userInput = document.getElementById("userInput").value;
             var modifiedText = "watch." + userInput.replace(/ /g, '.') + ".mx";
-            modifiedText = modifiedText.substring(0, 50); // Limit to a maximum of 50 characters
+            if (modifiedText.length > 50) {
+                modifiedText = modifiedText.substring(0, 50) + ".mx";
+            }
             document.getElementById("copyButton").style.display = "block";
             copiedText = modifiedText;
         }
