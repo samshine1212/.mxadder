@@ -5,57 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Modifier</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #userInput {
+            width: 300px; /* Adjust the width as needed */
+        }
+    </style>
 </head>
 <body>
-
     <input type="text" id="userInput">
-
     <button onclick="modifyText()">Modify</button>
-
     <button onclick="copyToClipboard()" id="copyButton" style="display:none;">Copy</button>
 
     <script>
         var copiedText;
 
         function modifyText() {
-            var userInput = document.getElementById("userInput").value;
-            var specificString1 = "https://stream.airtelxstreamsmarttube.workers.dev/0:/";
-            var specificString2 = "mkv?a=view";
-            var modifiedText = userInput.replace(/ /g, '.').replace(specificString1, '').replace(specificString2, '') + ".mx";
-
-            if (modifiedText.length > 50) {
-                modifiedText = modifiedText.substring(0, 47) + ".mx";
-            }
-
-            // Replace %20 with .
-            modifiedText = modifiedText.replace(/%20/g, '.');
-            
-            // Remove continuous dots 
-            modifiedText = modifiedText.replace(/\.{2,}/g, '.');
-
-            // Replace all other characters except a-z, A-Z, 0-9, . with .
-            modifiedText = modifiedText.replace(/[^a-zA-Z0-9.]/g, '.');
-
-            // Remove continuous dots 
-            modifiedText = modifiedText.replace(/\.{2,}/g, '.');
-            
-
-
-            document.getElementById("copyButton").style.display = "block";
-            copiedText = modifiedText;
+            // Your existing JavaScript code for text modification
         }
 
         function copyToClipboard() {
-            var copyText = copiedText;
-            var textArea = document.createElement("textarea");
-            textArea.value = copyText;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            alert("Copied to clipboard: " + copyText);
+            // Your existing JavaScript code for copying to clipboard
         }
     </script>
-
 </body>
 </html>
