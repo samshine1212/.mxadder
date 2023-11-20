@@ -16,7 +16,7 @@
             text-align: center;
         }
 
-        #userInput {
+        #movieNameInput {
             width: calc(100% - 10px);
             max-width: 500px;
             height: 300px;
@@ -31,49 +31,59 @@
             margin: 5px 5px 0 5px; /* Updated margins */
         }
 
-        #pasteButton {
+        #pasteButton,
+        #modifyButton {
             text-align: center; /* Center align text */
         }
     </style>
 </head>
 <body>
-    <input type="text" id="userInput" placeholder="Movie name paste akkooo">
+    <input type="text" id="movieNameInput" placeholder="Ivide movie name paste akkooo">
 
-    <button id="pasteButton" onclick="pasteAndCopy()">Ivide njekk</button>
+    <button id="pasteButton" onclick="pasteAndCopy()">Dhairyam indengi enne thottu nokkedaa</button>
+
+    <button id="modifyButton" onclick="modifyAndCopy()">
+        5 movie name orumich .mx akkanaa😎<br>
+        Molil oronn paste akk, ennit enne melle thodu🤭
+    </button>
 
     <div id="output"></div>
 
     <script>
         function pasteAndCopy() {
             navigator.clipboard.readText().then(function (text) {
-                var userInput = document.getElementById("userInput").value = text;
-                var specificString1 = "https://stream.airtelxstreamsmarttube.workers.dev/0:/";
-                var specificString2 = "mkv?a=view";
-                var modifiedText = userInput.replace(/ /g, '.').replace(specificString1, '').replace(specificString2, '') + ".mx";
-
-                if (modifiedText.length > 50) {
-                    modifiedText = modifiedText.substring(0, 47) + ".mx";
-                }
-
-                // Replace %20 with .
-                modifiedText = modifiedText.replace(/%20/g, '.');
-
-                // Remove continuous dots 
-                modifiedText = modifiedText.replace(/\.{2,}/g, '.');
-
-                // Replace all other characters except a-z, A-Z, 0-9, . with .
-                modifiedText = modifiedText.replace(/[^a-zA-Z0-9.]/g, '.');
-
-                // Remove continuous dots 
-                modifiedText = modifiedText.replace(/\.{2,}/g, '.');
-
-                navigator.clipboard.writeText(modifiedText).then(function () {
-                    appendText(modifiedText);
-                }).catch(function (err) {
-                    console.error('Failed to write to clipboard: ', err);
-                });
+                document.getElementById("movieNameInput").value = text;
             }).catch(function (err) {
                 console.error('Failed to read clipboard contents: ', err);
+            });
+        }
+
+        function modifyAndCopy() {
+            var userInput = document.getElementById("movieNameInput").value;
+            var specificString1 = "https://stream.airtelxstreamsmarttube.workers.dev/0:/";
+            var specificString2 = "mkv?a=view";
+            var modifiedText = userInput.replace(/ /g, '.').replace(specificString1, '').replace(specificString2, '') + ".mx";
+
+            if (modifiedText.length > 50) {
+                modifiedText = modifiedText.substring(0, 47) + ".mx";
+            }
+
+            // Replace %20 with .
+            modifiedText = modifiedText.replace(/%20/g, '.');
+
+            // Remove continuous dots 
+            modifiedText = modifiedText.replace(/\.{2,}/g, '.');
+
+            // Replace all other characters except a-z, A-Z, 0-9, . with .
+            modifiedText = modifiedText.replace(/[^a-zA-Z0-9.]/g, '.');
+
+            // Remove continuous dots 
+            modifiedText = modifiedText.replace(/\.{2,}/g, '.');
+
+            navigator.clipboard.writeText(modifiedText).then(function () {
+                appendText(modifiedText);
+            }).catch(function (err) {
+                console.error('Failed to write to clipboard: ', err);
             });
         }
 
