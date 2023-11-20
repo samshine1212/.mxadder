@@ -10,7 +10,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start; /* Updated alignment */
             height: 100vh;
             margin: 1px; /* Updated margin */
             text-align: center;
@@ -20,15 +20,15 @@
             width: calc(100% - 10px);
             max-width: 500px;
             height: 300px;
-            margin: 1px 5px; /* Updated margins */
+            margin: 1px 5px 5px 5px; /* Updated margins */
             text-align: center; /* Center align text */
         }
 
         button {
-            width: calc(100% - 60px); /* Reduced width by 50px */
-            max-width: 500px;
+            width: calc(100% - 110px); /* Increased width by 50px */
+            max-width: 550px; /* Updated max-width */
             height: 250px; /* Adjusted height */
-            margin: 1px 5px 0 5px; /* Updated margins */
+            margin: 5px 5px 0 5px; /* Updated margins */
         }
 
         #pasteButton {
