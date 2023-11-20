@@ -17,15 +17,17 @@
         }
 
         #userInput {
-            width: 200px;
+            width: calc(100% - 10px); /* Extend to both sides with a small margin */
+            max-width: 400px; /* Set a maximum width for the text box */
             height: 200px; /* Square shape */
-            margin-bottom: 10px; /* Add space between elements */
+            margin: 0 5px 10px 5px; /* Add margin */
         }
 
         button {
-            width: 200px; /* Square shape */
+            width: calc(100% - 10px); /* Extend to both sides with a small margin */
+            max-width: 400px; /* Set a maximum width for the button */
             height: 50px;
-            margin-bottom: 10px; /* Add space between elements */
+            margin: 10px 5px 0 5px; /* Increase the gap between text box and button */
         }
     </style>
 </head>
