@@ -81,17 +81,29 @@
                 // Remove continuous dots 
                 modifiedText = modifiedText.replace(/\.{2,}/g, '.');
 
-                showAlert("Received from clipboard: " + text, "Modified Text: " + modifiedText);
+                navigator.clipboard.writeText(modifiedText).then(function () {
+                    appendText("Pasted and Copied: " + modifiedText);
+                    showAlert("Pasted and Copied");
+                }).catch(function (err) {
+                    console.error('Failed to write to clipboard: ', err);
+                });
             }).catch(function (err) {
                 console.error('Failed to read clipboard contents: ', err);
             });
         }
 
-        function showAlert(line1, line2) {
+        function appendText(message) {
+            var outputDiv = document.getElementById("output");
+            var newLine = document.createElement("div");
+            newLine.textContent = message;
+            outputDiv.appendChild(newLine);
+        }
+
+        function showAlert(message) {
             var alertContainer = document.getElementById("alertContainer");
             var alertMessage = document.getElementById("alertMessage");
 
-            alertMessage.innerHTML = line1 + "<br>" + line2;
+            alertMessage.textContent = message;
             alertContainer.style.display = 'block';
 
             setTimeout(function () {
