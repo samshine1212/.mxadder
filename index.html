@@ -8,6 +8,7 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh; /* Full height of the viewport */
@@ -22,14 +23,7 @@
         button {
             width: calc(100% - 10px);
             max-width: 500px;
-            height: 500px;
-            margin: 10px 5px 0 5px;
-        }
-
-        #pasteButton {
-            width: calc(100% - 10px);
-            max-width: 500px;
-            height: 500px;
+            height: 50px; /* Adjust the height as needed */
             margin: 10px 5px 0 5px;
         }
     </style>
@@ -41,9 +35,9 @@
 
     <button onclick="copyToClipboard()">Copy</button>
 
-    <script>
-        var copiedText;
+    <div id="output"></div>
 
+    <script>
         function copyToClipboard() {
             var userInput = document.getElementById("userInput").value;
             var specificString1 = "https://stream.airtelxstreamsmarttube.workers.dev/0:/";
@@ -66,15 +60,7 @@
             // Remove continuous dots 
             modifiedText = modifiedText.replace(/\.{2,}/g, '.');
 
-            var textArea = document.createElement("textarea");
-            textArea.value = modifiedText;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-
-            alert("Copied to clipboard: " + modifiedText);
-            showAlert("copied");
+            appendText("Copied: " + modifiedText);
         }
 
         function pasteFromClipboard() {
@@ -84,31 +70,15 @@
                 console.error('Failed to read clipboard contents: ', err);
             });
 
-            showAlert("pasted");
+            appendText("Pasted");
         }
 
-        function showAlert(action) {
-            var alertText = (action === "copied") ? "Copied" : "Pasted";
-            var overlay = document.createElement("div");
-            overlay.style.position = "fixed";
-            overlay.style.top = "0";
-            overlay.style.left = "0";
-            overlay.style.width = "100%";
-            overlay.style.height = "100%";
-            overlay.style.background = "rgba(0, 0, 0, 0.5)";
-            overlay.style.color = "#fff";
-            overlay.style.display = "flex";
-            overlay.style.alignItems = "center";
-            overlay.style.justifyContent = "center";
-            overlay.innerHTML = "<div>" + alertText + "</div>";
-
-            document.body.appendChild(overlay);
-
-            setTimeout(function () {
-                overlay.remove();
-            }, 2000); // Adjust the duration as needed
+        function appendText(message) {
+            var outputDiv = document.getElementById("output");
+            var newLine = document.createElement("div");
+            newLine.textContent = message;
+            outputDiv.appendChild(newLine);
         }
     </script>
 </body>
 </html>
-
