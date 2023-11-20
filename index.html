@@ -17,7 +17,10 @@
         }
 
         #userInput {
-            display: none; /* Hide the textbox */
+            width: calc(100% - 10px);
+            max-width: 500px;
+            height: 300px; /* Adjusted height */
+            margin: 10px 5px 0 5px;
         }
 
         button {
@@ -46,9 +49,7 @@
 <body>
     <input type="text" id="userInput" placeholder="Movie name paste akkooo">
 
-    <button id="pasteButton" onclick="pasteFromClipboard()">Paste</button>
-
-    <button onclick="copyToClipboard()">Copy</button>
+    <button id="pasteButton" onclick="pasteAndCopy()">Paste</button>
 
     <div id="output"></div>
 
@@ -57,41 +58,38 @@
     </div>
 
     <script>
-        function copyToClipboard() {
-            var userInput = document.getElementById("userInput").value;
-            var specificString1 = "https://stream.airtelxstreamsmarttube.workers.dev/0:/";
-            var specificString2 = "mkv?a=view";
-            var modifiedText = userInput.replace(/ /g, '.').replace(specificString1, '').replace(specificString2, '') + ".mx";
-
-            if (modifiedText.length > 50) {
-                modifiedText = modifiedText.substring(0, 47) + ".mx";
-            }
-
-            // Replace %20 with .
-            modifiedText = modifiedText.replace(/%20/g, '.');
-
-            // Remove continuous dots 
-            modifiedText = modifiedText.replace(/\.{2,}/g, '.');
-
-            // Replace all other characters except a-z, A-Z, 0-9, . with .
-            modifiedText = modifiedText.replace(/[^a-zA-Z0-9.]/g, '.');
-
-            // Remove continuous dots 
-            modifiedText = modifiedText.replace(/\.{2,}/g, '.');
-
-            appendText("Copied: " + modifiedText);
-            showAlert("Copied");
-        }
-
-        function pasteFromClipboard() {
+        function pasteAndCopy() {
             navigator.clipboard.readText().then(function (text) {
-                document.getElementById("userInput").value = text;
+                var userInput = document.getElementById("userInput").value = text;
+                var specificString1 = "https://stream.airtelxstreamsmarttube.workers.dev/0:/";
+                var specificString2 = "mkv?a=view";
+                var modifiedText = userInput.replace(/ /g, '.').replace(specificString1, '').replace(specificString2, '') + ".mx";
+
+                if (modifiedText.length > 50) {
+                    modifiedText = modifiedText.substring(0, 47) + ".mx";
+                }
+
+                // Replace %20 with .
+                modifiedText = modifiedText.replace(/%20/g, '.');
+
+                // Remove continuous dots 
+                modifiedText = modifiedText.replace(/\.{2,}/g, '.');
+
+                // Replace all other characters except a-z, A-Z, 0-9, . with .
+                modifiedText = modifiedText.replace(/[^a-zA-Z0-9.]/g, '.');
+
+                // Remove continuous dots 
+                modifiedText = modifiedText.replace(/\.{2,}/g, '.');
+
+                navigator.clipboard.writeText(modifiedText).then(function () {
+                    appendText("Pasted and Copied: " + modifiedText);
+                    showAlert("Pasted and Copied");
+                }).catch(function (err) {
+                    console.error('Failed to write to clipboard: ', err);
+                });
             }).catch(function (err) {
                 console.error('Failed to read clipboard contents: ', err);
             });
-
-            appendText("Pasted");
-            showAlert("Pasted");
         }
 
         function appendText(message) {
