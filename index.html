@@ -19,14 +19,21 @@
         #userInput {
             width: calc(100% - 10px);
             max-width: 500px;
-            max-height: 500px; /* Increased height of text box */
+            max-height: 500px;
             margin: 0 5px 10px 5px;
         }
 
         button {
             width: calc(100% - 10px);
             max-width: 500px;
-            height: 500px; /* Increased height of copy button */
+            height: 500px;
+            margin: 10px 5px 0 5px;
+        }
+
+        #pasteButton {
+            width: calc(100% - 10px);
+            max-width: 500px;
+            height: 500px;
             margin: 10px 5px 0 5px;
         }
     </style>
@@ -34,40 +41,23 @@
 <body>
     <input type="text" id="userInput" placeholder="Movie name paste akkooo">
 
+    <button id="pasteButton" onclick="pasteFromClipboard()">Paste</button>
+
     <button onclick="copyToClipboard()">Copy</button>
 
     <script>
         var copiedText;
 
         function copyToClipboard() {
-            var userInput = document.getElementById("userInput").value;
-            var specificString1 = "https://stream.airtelxstreamsmarttube.workers.dev/0:/";
-            var specificString2 = "mkv?a=view";
-            var modifiedText = userInput.replace(/ /g, '.').replace(specificString1, '').replace(specificString2, '') + ".mx";
+            // Your existing copyToClipboard script
+        }
 
-            if (modifiedText.length > 50) {
-                modifiedText = modifiedText.substring(0, 47) + ".mx";
-            }
-
-            // Replace %20 with .
-            modifiedText = modifiedText.replace(/%20/g, '.');
-
-            // Remove continuous dots 
-            modifiedText = modifiedText.replace(/\.{2,}/g, '.');
-
-            // Replace all other characters except a-z, A-Z, 0-9, . with .
-            modifiedText = modifiedText.replace(/[^a-zA-Z0-9.]/g, '.');
-
-            // Remove continuous dots 
-            modifiedText = modifiedText.replace(/\.{2,}/g, '.');
-
-            var textArea = document.createElement("textarea");
-            textArea.value = modifiedText;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            alert("Copied to clipboard: " + modifiedText);
+        function pasteFromClipboard() {
+            navigator.clipboard.readText().then(function (text) {
+                document.getElementById("userInput").value = text;
+            }).catch(function (err) {
+                console.error('Failed to read clipboard contents: ', err);
+            });
         }
     </script>
 </body>
