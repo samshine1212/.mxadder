@@ -28,21 +28,18 @@
         }
 
         #alertContainer {
-            position: relative;
             width: calc(100% - 10px);
             max-width: 500px;
             margin: 10px 5px 0 5px;
+            display: none;
         }
 
         #alertMessage {
-            position: absolute;
-            top: -40px; /* Adjust this value for positioning */
             background-color: #f8d7da; /* Adjust background color */
             color: #721c24; /* Adjust text color */
             padding: 10px;
             border: 1px solid #f5c6cb; /* Adjust border color */
             border-radius: 5px;
-            display: none;
         }
     </style>
 </head>
@@ -108,18 +105,11 @@
             var alertContainer = document.getElementById("alertContainer");
             var alertMessage = document.getElementById("alertMessage");
 
-            // Remove old alert
-            alertMessage.style.display = 'none';
-
-            // Set new alert message
             alertMessage.textContent = message;
-            alertMessage.style.display = 'block';
-
-            // Adjust top position based on button height
-            alertMessage.style.top = '-' + (document.getElementById("pasteButton").offsetHeight + 10) + 'px';
+            alertContainer.style.display = 'block';
 
             setTimeout(function () {
-                alertMessage.style.display = 'none';
+                alertContainer.style.display = 'none';
             }, 2000); // Adjust the duration as needed
         }
     </script>
