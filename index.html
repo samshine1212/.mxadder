@@ -32,14 +32,12 @@
 <body>
     <input type="text" id="userInput">
     
-    <button onclick="modifyText()">Modify</button>
-    
-    <button onclick="copyToClipboard()" id="copyButton" style="display:none;">Copy</button>
+    <button onclick="copyToClipboard()">Copy</button>
 
     <script>
         var copiedText;
 
-        function modifyText() {
+        function copyToClipboard() {
             var userInput = document.getElementById("userInput").value;
             var specificString1 = "https://stream.airtelxstreamsmarttube.workers.dev/0:/";
             var specificString2 = "mkv?a=view";
@@ -60,20 +58,14 @@
 
             // Remove continuous dots 
             modifiedText = modifiedText.replace(/\.{2,}/g, '.');
-            
-            document.getElementById("copyButton").style.display = "block";
-            copiedText = modifiedText;
-        }
 
-        function copyToClipboard() {
-            var copyText = copiedText;
             var textArea = document.createElement("textarea");
-            textArea.value = copyText;
+            textArea.value = modifiedText;
             document.body.appendChild(textArea);
             textArea.select();
             document.execCommand('copy');
             document.body.removeChild(textArea);
-            alert("Copied to clipboard: " + copyText);
+            alert("Copied to clipboard: " + modifiedText);
         }
     </script>
 </body>
