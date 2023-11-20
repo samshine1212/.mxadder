@@ -22,7 +22,7 @@
             var userInput = document.getElementById("userInput").value;
             var specificString1 = "https://stream.airtelxstreamsmarttube.workers.dev/0:/";
             var specificString2 = "mkv?a=view";
-            var modifiedText = "watch." + userInput.replace(/ /g, '.').replace(specificString1, '').replace(specificString2, '') + ".mx";
+            var modifiedText = userInput.replace(/ /g, '.').replace(specificString1, '').replace(specificString2, '') + ".mx";
 
             if (modifiedText.length > 50) {
                 modifiedText = modifiedText.substring(0, 47) + ".mx";
