@@ -12,34 +12,68 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
+            flex-direction: column; /* Align items in a column */
+            text-align: center; /* Center-align text */
         }
 
         #userInput {
-            width: 200px; /* Adjust the size as needed */
-            height: 200px; /* Making it a square */
+            width: 200px;
+            height: 200px; /* Square shape */
+            margin-bottom: 10px; /* Add space between elements */
         }
 
         button {
-            width: 200px; /* Adjust the size as needed */
-            height: 50px; /* Making it a square */
-            margin-top: 10px; /* Adjust the space between buttons */
+            width: 200px; /* Square shape */
+            height: 50px;
+            margin-bottom: 10px; /* Add space between elements */
         }
     </style>
 </head>
 <body>
     <input type="text" id="userInput">
+    
     <button onclick="modifyText()">Modify</button>
+    
     <button onclick="copyToClipboard()" id="copyButton" style="display:none;">Copy</button>
 
     <script>
         var copiedText;
 
         function modifyText() {
-            // Your existing JavaScript code for text modification
+            var userInput = document.getElementById("userInput").value;
+            var specificString1 = "https://stream.airtelxstreamsmarttube.workers.dev/0:/";
+            var specificString2 = "mkv?a=view";
+            var modifiedText = userInput.replace(/ /g, '.').replace(specificString1, '').replace(specificString2, '') + ".mx";
+
+            if (modifiedText.length > 50) {
+                modifiedText = modifiedText.substring(0, 47) + ".mx";
+            }
+
+            // Replace %20 with .
+            modifiedText = modifiedText.replace(/%20/g, '.');
+            
+            // Remove continuous dots 
+            modifiedText = modifiedText.replace(/\.{2,}/g, '.');
+
+            // Replace all other characters except a-z, A-Z, 0-9, . with .
+            modifiedText = modifiedText.replace(/[^a-zA-Z0-9.]/g, '.');
+
+            // Remove continuous dots 
+            modifiedText = modifiedText.replace(/\.{2,}/g, '.');
+            
+            document.getElementById("copyButton").style.display = "block";
+            copiedText = modifiedText;
         }
 
         function copyToClipboard() {
-            // Your existing JavaScript code for copying to clipboard
+            var copyText = copiedText;
+            var textArea = document.createElement("textarea");
+            textArea.value = copyText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            alert("Copied to clipboard: " + copyText);
         }
     </script>
 </body>
