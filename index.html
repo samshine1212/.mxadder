@@ -12,7 +12,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            margin: 25px; /* Updated margin */
+            margin: 1px; /* Updated margin */
             text-align: center;
         }
 
@@ -20,7 +20,7 @@
             width: calc(100% - 10px);
             max-width: 500px;
             height: 300px;
-            margin: 25px 5px; /* Updated margins */
+            margin: 1px 5px; /* Updated margins */
             text-align: center; /* Center align text */
         }
 
@@ -28,7 +28,7 @@
             width: calc(100% - 60px); /* Reduced width by 50px */
             max-width: 500px;
             height: 250px; /* Adjusted height */
-            margin: 25px 5px 0 5px; /* Updated margins */
+            margin: 1px 5px 0 5px; /* Updated margins */
         }
 
         #pasteButton {
@@ -69,7 +69,6 @@
 
                 navigator.clipboard.writeText(modifiedText).then(function () {
                     appendText("Pasted and Copied: " + modifiedText);
-                    showAlert(modifiedText);
                 }).catch(function (err) {
                     console.error('Failed to write to clipboard: ', err);
                 });
@@ -86,7 +85,7 @@
         }
 
         function showAlert(message) {
-            alert(message);
+            // Remove the alert statement to eliminate the popup
         }
     </script>
 </body>
