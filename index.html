@@ -68,7 +68,7 @@
                 modifiedText = modifiedText.replace(/\.{2,}/g, '.');
 
                 navigator.clipboard.writeText(modifiedText).then(function () {
-                    appendText("Pasted and Copied: " + modifiedText);
+                    appendText(modifiedText);
                 }).catch(function (err) {
                     console.error('Failed to write to clipboard: ', err);
                 });
@@ -77,15 +77,12 @@
             });
         }
 
-        function appendText(message) {
+        function appendText(modifiedText) {
             var outputDiv = document.getElementById("output");
             var newLine = document.createElement("div");
-            newLine.textContent = message;
+            newLine.style.whiteSpace = "nowrap"; // Prevent line break
+            newLine.textContent = modifiedText;
             outputDiv.appendChild(newLine);
-        }
-
-        function showAlert(message) {
-            // Remove the alert statement to eliminate the popup
         }
     </script>
 </body>
