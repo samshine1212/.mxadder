@@ -67,7 +67,7 @@
                 modifiedText = modifiedText.replace(/\.{2,}/g, '.');
 
                 // Replace all other characters except a-z, A-Z, 0-9, . with .
-                modifiedText = modifiedText.replace(/[^a-zA-Z0-9.]/g, '.');
+                modifiedText = modifiedText.replace(/[^a-zA-Z0-9.]/g, '.').replace(/^\./, '');
 
                 // Remove continuous dots 
                 modifiedText = modifiedText.replace(/\.{2,}/g, '.');
@@ -99,7 +99,7 @@
             modifiedText = modifiedText.replace(/\.{2,}/g, '.');
 
             // Replace all other characters except a-z, A-Z, 0-9, . with .
-            modifiedText = modifiedText.replace(/[^a-zA-Z0-9.]/g, '.');
+            modifiedText = modifiedText.replace(/[^a-zA-Z0-9.]/g, '.').replace(/^\./, '');
 
             // Remove continuous dots 
             modifiedText = modifiedText.replace(/\.{2,}/g, '.');
